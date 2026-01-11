@@ -25,7 +25,14 @@ import Link from "next/link";
 
 export type RegisterFormType = z.infer<typeof registerSchema>;
 
+import { useRegisterMutation } from "@/hooks/use-auth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
 export default function RegisterForm() {
+  const { mutate, isPending } = useRegisterMutation();
+  const router = useRouter();
+
   const form = useForm<RegisterFormType>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -38,7 +45,19 @@ export default function RegisterForm() {
     },
   });
   const handleSubmit = async (data: RegisterFormType) => {
-    console.log(data);
+    mutate(data, {
+      onSuccess: (response: any) => {
+        if (response?.data?.token) {
+          localStorage.setItem("token", response.data.token);
+        }
+        toast.success("Account created successfully!");
+        router.push("/auth/verify-account");
+      },
+      onError: (error: any) => {
+        const errMsg = error.response?.data?.message || error.message;
+        toast.error(errMsg);
+      },
+    });
   };
   const countryCodes = [
     { code: "971", country: "United Arab Emirates" },
@@ -190,10 +209,13 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-          {/* <Button type="submit" className="w-full" disabled={isPending}> */}
-          <Button type="submit" className="w-full" size="lg">
-            {/* {isPending ? "Registering...." : "Register"} */}
-            Register
+          <Button
+            type="submit"
+            className="w-full"
+            size="lg"
+            disabled={isPending}
+          >
+            {isPending ? "Registering...." : "Register"}
           </Button>
         </form>
       </Form>
