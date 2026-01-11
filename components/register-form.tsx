@@ -28,7 +28,18 @@ type RegisterFormType = z.infer<typeof registerSchema>;
 export default function RegisterForm() {
   const form = useForm<RegisterFormType>({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      mobile: "",
+      password: "",
+      password_confirmation: "",
+      mobile_country_code: "971",
+    },
   });
+  const handleSubmit = async (data: RegisterFormType) => {
+    console.log(data);
+  };
   const countryCodes = [
     { code: "971", country: "United Arab Emirates" },
     { code: "1", country: "United States" },
@@ -48,10 +59,7 @@ export default function RegisterForm() {
   return (
     <>
       <Form {...form}>
-        <form
-          // onSubmit={form.handleSubmit()}
-          className="space-y-6"
-        >
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <FormField
             name="name"
             render={({ field }) => (
@@ -93,39 +101,39 @@ export default function RegisterForm() {
           {/* country code and phone number */}
           <div className="flex items-center gap-4">
             <FormField
-              name="country_code"
+              name="mobile_country_code"
               render={({ field }) => (
                 <FormItem className="relative w-1/3">
                   <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
                     Country Code
                   </FormLabel>
-                  <FormControl>
-                    <Select defaultValue="971">
-                      <SelectTrigger
-                        className="min-w-2/3 w-2/3 max-w-2/3"
-                        {...field}
-                      >
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="min-w-2/3 w-2/3 max-w-2/3">
                         <SelectValue placeholder="Select country code" />
                       </SelectTrigger>
-                      <SelectContent className="">
-                        {countryCodes.map(({ code, country }) => (
-                          <SelectItem
-                            key={code}
-                            value={code}
-                            className="text-xs text-[#020202] font-medium w-fit"
-                          >
-                            +{code} - {country}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
+                    </FormControl>
+                    <SelectContent className="">
+                      {countryCodes.map(({ code, country }) => (
+                        <SelectItem
+                          key={code}
+                          value={code}
+                          className="text-xs text-[#020202] font-medium w-fit"
+                        >
+                          +{code} - {country}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
-              name="phone"
+              name="mobile"
               render={({ field }) => (
                 <FormItem className="relative flex-1">
                   <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
