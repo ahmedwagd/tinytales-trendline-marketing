@@ -7,16 +7,16 @@ export default function Home() {
       {/* register page link */}
       <div className="container mx-auto px-6 py-12">
         <div className="text-center max-w-2xl mx-auto">
-          <Button variant="default" size="lg" className="me-2">
-            <Link href="/auth/register" className="">
+          <Link href="/auth/register" className="">
+            <Button variant="default" size="lg" className="me-2">
               Register
-            </Link>
-          </Button>
-          <Button variant="default" size="lg">
-            <Link href="/auth/login" className="">
+            </Button>
+          </Link>
+          <Link href="/auth/login" className="">
+            <Button variant="default" size="lg">
               Login
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
       </div>
     </main>
