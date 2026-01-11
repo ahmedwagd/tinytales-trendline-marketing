@@ -21,15 +21,19 @@ type LoginFormType = z.infer<typeof loginSchema>;
 export default function LoginForm() {
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
+  const handleSubmit = async (data: LoginFormType) => {
+    console.log(data);
+  };
 
   return (
     <>
       <Form {...form}>
-        <form
-          // onSubmit={form.handleSubmit()}
-          className="space-y-6"
-        >
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
           <FormField
             name="email"
             render={({ field }) => (
@@ -73,7 +77,7 @@ export default function LoginForm() {
           {/* <Button type="submit" className="w-full" disabled={isPending}> */}
           <Button type="submit" className="w-full" size="lg">
             {/* {isPending ? "Registering...." : "Register"} */}
-            Register
+            Login
           </Button>
         </form>
       </Form>
