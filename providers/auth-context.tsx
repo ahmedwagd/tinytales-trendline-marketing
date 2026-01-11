@@ -35,6 +35,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     try {
       console.log("Logout successful");
+      localStorage.removeItem("token");
       setUser(null);
       setIsAuthenticated(false);
     } catch (error) {
