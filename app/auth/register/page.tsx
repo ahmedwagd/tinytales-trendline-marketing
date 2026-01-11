@@ -1,4 +1,4 @@
-import HeroBanner from "@/components/heroBanner";
+import HeroBanner from "@/components/hero-banner";
 import { Metadata } from "next";
 import RegisterForm from "@/components/register-form";
 
