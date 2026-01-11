@@ -193,7 +193,7 @@ export default function RegisterForm() {
         <div className="flex w-full items-center justify-center">
           <p className="text-muted-foreground text-sm">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-blue-600">
+            <Link href="/auth/login" className="text-[#020202] font-medium">
               Login
             </Link>
           </p>

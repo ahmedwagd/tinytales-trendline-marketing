@@ -81,7 +81,7 @@ export default function LoginForm() {
         <div className="flex w-full items-center justify-center">
           <p className="text-muted-foreground text-sm">
             Don&apos;t have an account?{" "}
-            <Link href="/auth/register" className="text-blue-600">
+            <Link href="/auth/register" className="text-[#020202] font-medium">
               Register
             </Link>
           </p>
