@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import type z from "zod";
 
-type LoginFormType = z.infer<typeof loginSchema>;
+export type LoginFormType = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
   const form = useForm<LoginFormType>({

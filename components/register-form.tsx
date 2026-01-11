@@ -23,7 +23,7 @@ import type z from "zod";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-type RegisterFormType = z.infer<typeof registerSchema>;
+export type RegisterFormType = z.infer<typeof registerSchema>;
 
 export default function RegisterForm() {
   const form = useForm<RegisterFormType>({

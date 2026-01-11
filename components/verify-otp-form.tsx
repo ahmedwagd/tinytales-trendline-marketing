@@ -13,7 +13,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import type z from "zod";
-type VerifyOTPFormType = z.infer<typeof verifyOTPSchema>;
+
+export type VerifyOTPFormType = z.infer<typeof verifyOTPSchema>;
 
 export default function VerifyOTPForm() {
   const form = useForm<VerifyOTPFormType>({
