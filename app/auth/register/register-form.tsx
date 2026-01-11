@@ -20,13 +20,12 @@ import { registerSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type z from "zod";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type RegisterFormType = z.infer<typeof registerSchema>;
 
 export default function RegisterForm() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const form = useForm<RegisterFormType>({
     resolver: zodResolver(registerSchema),
   });
@@ -47,88 +46,24 @@ export default function RegisterForm() {
   ];
 
   return (
-    <Form {...form}>
-      <form
-        // onSubmit={form.handleSubmit()}
-        className="space-y-6"
-      >
-        <FormField
-          name="name"
-          render={({ field }) => (
-            <FormItem className="relative">
-              <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                Full Name
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  {...field}
-                  placeholder="Enter your full name"
-                  className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="email"
-          render={({ field }) => (
-            <FormItem className="relative">
-              <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                Email
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="email"
-                  {...field}
-                  placeholder="Enter your email"
-                  className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {/* country code and phone number */}
-        <div className="flex ">
+    <>
+      <Form {...form}>
+        <form
+          // onSubmit={form.handleSubmit()}
+          className="space-y-6"
+        >
           <FormField
-            name="country_code"
+            name="name"
             render={({ field }) => (
-              <FormItem className="relative w-1/3">
+              <FormItem className="relative">
                 <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                  Country Code
-                </FormLabel>
-                <FormControl>
-                  <Select defaultValue="971">
-                    <SelectTrigger className="w-1/3" {...field}>
-                      <SelectValue placeholder="Select country code" />
-                    </SelectTrigger>
-                    <SelectContent className="w-2/3">
-                      {countryCodes.map(({ code, country }) => (
-                        <SelectItem key={code} value={code}>
-                          + {code} - {country}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            name="phone"
-            render={({ field }) => (
-              <FormItem className="relative flex-1">
-                <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                  Phone Number
+                  Full Name
                 </FormLabel>
                 <FormControl>
                   <Input
-                    type="tel"
+                    type="text"
                     {...field}
-                    placeholder="Enter your phone number"
+                    placeholder="Enter your full name"
                     className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
                   />
                 </FormControl>
@@ -136,46 +71,134 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
+          <FormField
+            name="email"
+            render={({ field }) => (
+              <FormItem className="relative">
+                <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
+                  Email
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    {...field}
+                    placeholder="Enter your email"
+                    className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* country code and phone number */}
+          <div className="flex items-center gap-4">
+            <FormField
+              name="country_code"
+              render={({ field }) => (
+                <FormItem className="relative w-1/3">
+                  <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
+                    Country Code
+                  </FormLabel>
+                  <FormControl>
+                    <Select defaultValue="971">
+                      <SelectTrigger
+                        className="min-w-2/3 w-2/3 max-w-2/3"
+                        {...field}
+                      >
+                        <SelectValue placeholder="Select country code" />
+                      </SelectTrigger>
+                      <SelectContent className="">
+                        {countryCodes.map(({ code, country }) => (
+                          <SelectItem
+                            key={code}
+                            value={code}
+                            className="text-xs text-[#020202] font-medium w-fit"
+                          >
+                            +{code} - {country}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="phone"
+              render={({ field }) => (
+                <FormItem className="relative flex-1">
+                  <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
+                    Phone Number
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="tel"
+                      {...field}
+                      placeholder="Enter your phone number"
+                      className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <FormField
+            name="password"
+            render={({ field }) => (
+              <FormItem className="relative">
+                <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
+                  Password
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    {...field}
+                    placeholder="Enter your password"
+                    className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="password_confirmation"
+            render={({ field }) => (
+              <FormItem className="relative">
+                <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
+                  Confirm Password
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    {...field}
+                    placeholder="Confirm your password"
+                    className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {/* <Button type="submit" className="w-full" disabled={isPending}> */}
+          <Button type="submit" className="w-full" size="lg">
+            {/* {isPending ? "Registering...." : "Register"} */}
+            Register
+          </Button>
+        </form>
+      </Form>
+      <div className="mt-4 text-center">
+        <div className="flex w-full items-center justify-center">
+          <p className="text-muted-foreground text-sm">
+            Already have an account?{" "}
+            <Link href="/auth/login" className="text-blue-600">
+              Login
+            </Link>
+          </p>
         </div>
-        <FormField
-          name="password"
-          render={({ field }) => (
-            <FormItem className="relative">
-              <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                Password
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  {...field}
-                  placeholder="Enter your password"
-                  className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="password_confirmation"
-          render={({ field }) => (
-            <FormItem className="relative">
-              <FormLabel className="absolute -top-2 left-3 z-10 px-1 text-xs text-[#020202]">
-                Confirm Password
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  {...field}
-                  placeholder="Confirm your password"
-                  className="text-xs text-[#020202] font-medium w-full rounded-[10px] border-muted-foreground/15"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </form>
-    </Form>
+      </div>
+    </>
   );
 }
