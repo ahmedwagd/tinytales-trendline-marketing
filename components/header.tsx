@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="mx-auto flex h-20 items-center gap-8 px-4 sm:px-6 lg:px-8 shadow-md lg:shadow-lg">
+    <header className="mx-auto flex h-20 items-center py-3 gap-8 px-4 sm:px-6 lg:px-8 shadow-md lg:shadow-lg">
       <Link className="block" href="/">
         <span className="sr-only">Home</span>
         <img className="size-16" src="/logo.svg" alt="logo" />
