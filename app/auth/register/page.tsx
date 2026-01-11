@@ -1,6 +1,6 @@
 import HeroBanner from "@/components/heroBanner";
 import { Metadata } from "next";
-import RegisterForm from "./register-form";
+import RegisterForm from "@/components/register-form";
 
 export const metadata: Metadata = {
   title: "Register",
