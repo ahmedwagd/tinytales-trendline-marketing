@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/react-query-provider";
+import Header from "@/components/header";
 
 const poppinsSans = Poppins({
   subsets: ["latin"],
@@ -28,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${poppinsSans.className} ${geistMono.variable} antialiased`}
       >
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <Header />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );

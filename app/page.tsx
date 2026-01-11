@@ -3,13 +3,22 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 ">
+    <main className="min-h-screen">
       {/* register page link */}
-      <Button variant="default">
-        <Link href="/auth/register" className="">
-          Register
-        </Link>
-      </Button>
+      <div className="container mx-auto px-6 py-12">
+        <div className="text-center max-w-2xl mx-auto">
+          <Button variant="default" size="lg" className="me-2">
+            <Link href="/auth/register" className="">
+              Register
+            </Link>
+          </Button>
+          <Button variant="default" size="lg">
+            <Link href="/auth/login" className="">
+              Login
+            </Link>
+          </Button>
+        </div>
+      </div>
     </main>
   );
 }
