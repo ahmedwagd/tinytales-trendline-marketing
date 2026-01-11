@@ -6,11 +6,9 @@ export const registerSchema = z
     email: z
       .string({ message: "Email is required" })
       .email({ message: "Invalid email address" }),
-    mobile: z
-      .string({ message: "Mobile number is required" })
-      .min(10, {
-        message: "Mobile number must be at least 10 characters long",
-      }),
+    mobile: z.string({ message: "Mobile number is required" }).min(10, {
+      message: "Mobile number must be at least 10 characters long",
+    }),
     password: z
       .string({ message: "Password is required" })
       .min(6, { message: "Password must be at least 6 characters long" }),
@@ -29,3 +27,12 @@ export const registerSchema = z
     message: "Passwords do not match",
     path: ["password_confirmation"],
   });
+
+export const loginSchema = z.object({
+  email: z
+    .string({ message: "Email is required" })
+    .email({ message: "Invalid email address" }),
+  password: z
+    .string({ message: "Password is required" })
+    .min(6, { message: "Password must be at least 6 characters long" }),
+});
