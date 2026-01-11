@@ -10,15 +10,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useLoginMutation } from "@/hooks/use-auth";
 import { loginSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { redirect, RedirectType } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import type z from "zod";
 
 export type LoginFormType = z.infer<typeof loginSchema>;
 
 export default function LoginForm() {
+  const { mutate, isPending } = useLoginMutation();
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -28,6 +32,21 @@ export default function LoginForm() {
   });
   const handleSubmit = async (data: LoginFormType) => {
     console.log(data);
+    mutate(data, {
+      onSuccess: (response: any) => {
+        if (response?.data?.token) {
+          localStorage.setItem("token", response.data.token);
+        }
+        toast.success("Login successful!");
+        form.reset();
+        redirect("/", RedirectType.replace);
+      },
+      onError: (error: any) => {
+        const errMsg = error.response?.data?.message || error.message;
+        console.log(errMsg);
+        toast.error(errMsg);
+      },
+    });
   };
 
   return (
@@ -74,10 +93,13 @@ export default function LoginForm() {
             )}
           />
 
-          {/* <Button type="submit" className="w-full" disabled={isPending}> */}
-          <Button type="submit" className="w-full" size="lg">
-            {/* {isPending ? "Registering...." : "Register"} */}
-            Login
+          <Button
+            type="submit"
+            className="w-full"
+            size="lg"
+            disabled={isPending}
+          >
+            {isPending ? "Logging in...." : "Login"}
           </Button>
         </form>
       </Form>
