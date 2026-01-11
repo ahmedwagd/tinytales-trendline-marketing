@@ -13,6 +13,7 @@ export default function AuthLayout({
 }>) {
   return (
     <>
+      <Header />
       <main className="min-h-screen">{children}</main>
     </>
   );

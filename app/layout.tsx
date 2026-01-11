@@ -29,10 +29,7 @@ export default function RootLayout({
       <body
         className={`${poppinsSans.className} ${geistMono.variable} antialiased`}
       >
-        <ReactQueryProvider>
-          <Header />
-          {children}
-        </ReactQueryProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
