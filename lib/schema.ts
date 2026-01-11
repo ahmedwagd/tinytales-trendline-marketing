@@ -36,3 +36,9 @@ export const loginSchema = z.object({
     .string({ message: "Password is required" })
     .min(6, { message: "Password must be at least 6 characters long" }),
 });
+
+export const verifyOTPSchema = z.object({
+  code: z.string({ message: "OTP is required" }).min(6, {
+    message: "OTP must be at least 6 characters long",
+  }),
+});
