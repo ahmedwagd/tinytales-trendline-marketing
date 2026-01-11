@@ -120,6 +120,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-sm text-[#020202];
+    @apply bg-[#FEFEFE] text-sm text-[#020202];
   }
 }
