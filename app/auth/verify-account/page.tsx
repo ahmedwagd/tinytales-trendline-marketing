@@ -1,5 +1,4 @@
 import HeroBanner from "@/components/hero-banner";
-import LoginForm from "@/components/login-form";
 import VerifyOTPForm from "@/components/verify-otp-form";
 import { Metadata } from "next";
 

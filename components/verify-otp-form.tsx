@@ -7,16 +7,21 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { useVerifyAccountMutation } from "@/hooks/use-auth";
 import { verifyOTPSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import type z from "zod";
 
 export type VerifyOTPFormType = z.infer<typeof verifyOTPSchema>;
 
 export default function VerifyOTPForm() {
+  const { mutate, isPending } = useVerifyAccountMutation();
+  const router = useRouter();
+
   const form = useForm<VerifyOTPFormType>({
     resolver: zodResolver(verifyOTPSchema),
     defaultValues: {
@@ -24,7 +29,16 @@ export default function VerifyOTPForm() {
     },
   });
   const handleSubmit = async (data: VerifyOTPFormType) => {
-    console.log(data);
+    mutate(data, {
+      onSuccess: (response: any) => {
+        toast.success("Account verified successfully!");
+        router.push("/auth/login");
+      },
+      onError: (error: any) => {
+        const errMsg = error.response?.data?.message || error.message;
+        toast.error(errMsg);
+      },
+    });
   };
   return (
     <>
@@ -54,10 +68,13 @@ export default function VerifyOTPForm() {
             )}
           />
 
-          {/* <Button type="submit" className="w-full" disabled={isPending}> */}
-          <Button type="submit" className="w-full" size="lg">
-            {/* {isPending ? "Registering...." : "Register"} */}
-            Verify OTP
+          <Button
+            type="submit"
+            className="w-full"
+            size="lg"
+            disabled={isPending}
+          >
+            {isPending ? "Verifying OTP...." : "Verify OTP"}
           </Button>
         </form>
       </Form>
