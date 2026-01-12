@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function Breadcrumbs() {
   return (
-    <nav className=" text-sm bg-[#ECECEC66] my-4 px-4 py-4 rounded-xl">
+    <nav className=" text-sm bg-[#ECECEC66] my-2 md:my-4 px-4 py-4 rounded-xl">
       <div className="flex items-center">
         <BreadcrumbLink href="/">Home</BreadcrumbLink>
         <BreadcrumbLink href="/category">Our Category</BreadcrumbLink>
