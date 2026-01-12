@@ -25,7 +25,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-24 gap-4">
-      <h1 className="text-4xl font-bold">Welcome, {user?.name}</h1>
+      <h1 className="text-4xl font-bold">Welcome, {user}</h1>
       <Button onClick={logout} variant="destructive">
         Logout
       </Button>
