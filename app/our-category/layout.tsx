@@ -3,11 +3,11 @@ import Header from "@/components/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Task Auth",
-  description: "Task Auth Page",
+  title: "Our Category",
+  description: "Our Category Page",
 };
 
-export default function AuthLayout({
+export default function CategoryLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
