@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Home,
   Grid2X2,
@@ -32,10 +33,13 @@ export default function Header() {
         <div className="flex items-center justify-center">
           <Link className="block" href="/">
             <span className="sr-only">Home</span>
-            <img
-              src={"/Logo.svg"}
+            <Image
+              src="/Logo.svg"
               alt="Logo"
+              width={66}
+              height={51}
               className="h-14 w-auto transition-transform cursor-pointer"
+              priority
             />
           </Link>
         </div>
