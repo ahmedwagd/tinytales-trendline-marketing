@@ -28,9 +28,11 @@ export type RegisterFormType = z.infer<typeof registerSchema>;
 import { useRegisterMutation } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/providers/auth-context";
 
 export default function RegisterForm() {
   const { mutate, isPending } = useRegisterMutation();
+  const { login } = useAuth();
   const router = useRouter();
 
   const form = useForm<RegisterFormType>({
@@ -47,10 +49,14 @@ export default function RegisterForm() {
   const handleSubmit = async (data: RegisterFormType) => {
     mutate(data, {
       onSuccess: (response: any) => {
-        if (response?.data?.token) {
+        if (response?.data?.token && response?.data?.user) {
+          login(response.data.user, response.data.token);
+        } else if (response?.data?.token) {
+          // Fallback if user is not in response, though login() expects user
           localStorage.setItem("token", response.data.token);
         }
-        toast.success("Account created successfully!");
+
+        toast.success(response.message);
         router.push("/auth/verify-account");
       },
       onError: (error: any) => {
