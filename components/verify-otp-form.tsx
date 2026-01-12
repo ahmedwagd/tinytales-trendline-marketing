@@ -31,7 +31,7 @@ export default function VerifyOTPForm() {
   const handleSubmit = async (data: VerifyOTPFormType) => {
     mutate(data, {
       onSuccess: (response: any) => {
-        toast.success("Account verified successfully!");
+        toast.success(response.message);
         router.push("/auth/login");
       },
       onError: (error: any) => {
