@@ -33,7 +33,7 @@ export default function Header() {
           <Link className="block" href="/">
             <span className="sr-only">Home</span>
             <img
-              src="/logo.svg"
+              src={"/logo.svg"}
               alt="Logo"
               className="h-14 w-auto transition-transform cursor-pointer"
             />

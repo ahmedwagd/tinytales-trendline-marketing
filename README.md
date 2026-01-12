@@ -4,28 +4,30 @@ This is a Next.js application implementing authentication flows (Login, Register
 
 ## Features
 
--   **Registration**: User registration with form validation.
--   **OTP Verification**: Account verification after registration.
--   **Login**: Secure login with JWT token storage.
--   **Dashboard**: Protected route displaying user information.
--   **Auth Context**: Centralized state management for authentication.
+- **Registration**: User registration with form validation.
+- **OTP Verification**: Account verification after registration.
+- **Login**: Secure login with JWT token storage.
+- **Dashboard**: Protected route displaying user information.
+- **Auth Context**: Centralized state management for authentication.
 
 ## Setup Instructions
 
 ### Prerequisites
 
--   Node.js (v18 or higher)
--   npm or yarn or pnpm
+- Node.js (v18 or higher)
+- npm or yarn or pnpm
 
 ### Installation
 
 1.  Clone the repository:
+
     ```bash
     git clone <repository-url>
     cd task
     ```
 
 2.  Install dependencies:
+
     ```bash
     npm install
     # or
@@ -58,15 +60,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Deploying to Vercel
 
-1.  Push your code to a GitHub/GitLab/Bitbucket repository.
-2.  Go to [Vercel](https://vercel.com) and sign up/login.
-3.  Click **"Add New..."** -> **"Project"**.
-4.  Import your repository.
-5.  In the **"Environment Variables"** section, add `NEXT_PUBLIC_BASE_URL` with your API URL.
-6.  Click **"Deploy"**.
-
-Your application will be live in a few minutes!
-
 ### Live Demo
 
-[Insert your live demo link here]
+[https://tinytales-trendline-marketing.vercel.app]
