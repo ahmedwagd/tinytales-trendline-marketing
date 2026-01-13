@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 
 export default function ReviewsSection() {
   return (
-    <div className="py-10 mt-15 lg:mt-25">
+    <section className="py-10 mt-15 lg:mt-25">
       <h2 className="text-2xl font-semibold mb-8 relative">
         Rating & Reviews
         <span className="absolute -bottom-0.5 left-0 w-12 h-1 bg-[#BE968E] rounded-bl-md"></span>
@@ -95,6 +95,6 @@ export default function ReviewsSection() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
