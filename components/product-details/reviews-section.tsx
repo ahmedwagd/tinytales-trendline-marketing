@@ -13,7 +13,7 @@ export default function ReviewsSection() {
             <div className="text-[80px] lg:text-[120px] font-medium">
               4,5<span className="text-2xl text-[#B0B0B0] font-normal">/5</span>
             </div>
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-4/6">
               <div className="space-y-2">
                 {[
                   { stars: 5, pct: "67%" },
