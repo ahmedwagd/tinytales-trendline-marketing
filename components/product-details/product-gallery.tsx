@@ -23,7 +23,7 @@ export default function ProductGallery() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <section className="flex flex-col gap-2">
       {/* Main Image Stage */}
       <div className="relative group rounded-3xl overflow-hidden bg-gray-100 aspect-4/5 lg:aspect-auto w-full h-full  shadow-sm">
         <div className="absolute inset-0 flex items-center justify-center shadow-2xl bg-white/80 px-4">
@@ -91,6 +91,6 @@ export default function ProductGallery() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

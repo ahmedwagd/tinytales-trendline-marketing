@@ -16,7 +16,7 @@ export default function ProductInfo() {
   ];
 
   return (
-    <div className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6">
       {/* Badge & Actions */}
       <div className="flex justify-between items-start">
         <span className="px-4 py-3 rounded-full border border-[#BE968E] text-sm font-semibold text-[#BE968E]">
@@ -150,6 +150,6 @@ export default function ProductInfo() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
