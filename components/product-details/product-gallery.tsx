@@ -29,25 +29,38 @@ export default function ProductGallery() {
         <div className="absolute inset-0 flex items-center justify-center shadow-2xl bg-white/80 px-4">
           {/*  */}
         </div>
-        <Image
-          src={IMAGES[currentImage]}
-          alt="Product Image"
-          fill
-          objectFit="cover"
-          className="object-cover"
-          priority
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={IMAGES[currentImage]}
+            alt="Product Image"
+            fill
+            objectFit="cover"
+            className="object-cover bg-linear-to-b from-[#020202B2]/40 via-white to-white bg-blend-overlay bg-no-repeat bg-cover"
+            priority
+          />
+          {/* gallery indicator */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 flex gap-2 items-center">
+            {IMAGES.map((_, idx) => (
+              <div
+                key={idx}
+                className={`w-26 h-1 rounded ${
+                  currentImage === idx ? "bg-[#020202B2]/40" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
         {/* Navigation Arrows */}
         <button
           onClick={prevImage}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#C4C4C4] hover:bg-[#BE968E]/60 border-0 flex items-center justify-center text-white p-4 rounded-full shadow-lg  transition-all duration-300"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextImage}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300"
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#BE968E] hover:bg-[#BE968E]/60 border-0 flex items-center justify-center text-white p-4 rounded-full shadow-lg transition-all duration-300"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
@@ -55,7 +68,7 @@ export default function ProductGallery() {
 
       {/* Thumbnails */}
       <div className="flex gap-2 items-center">
-        {IMAGES.slice(0, 3).map((img, idx) => (
+        {IMAGES.slice(1, 4).map((img, idx) => (
           <div
             key={idx}
             onClick={() => setCurrentImage(idx)}
