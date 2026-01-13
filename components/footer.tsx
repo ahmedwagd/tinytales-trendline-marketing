@@ -88,20 +88,24 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-lg mb-4">Send Email</h3>
-            <div className="flex bg-white rounded-full p-1 pl-4">
+            <h5 className="font-semibold text-[16px] lg:text-2xl mb-5 lg:mb-6">
+              Send Email
+            </h5>
+            <div className="flex bg-white rounded-2xl p-1 pl-4">
               <input
                 type="email"
                 placeholder="Email address"
                 className="bg-transparent flex-1 text-black outline-none text-sm placeholder:text-gray-400"
               />
-              <button className="bg-[#bc9b8b] hover:bg-[#a88a7a] text-white px-6 py-2 rounded-full text-sm font-medium transition-colors">
+              <button className="bg-[#bc9b8b] hover:bg-[#a88a7a] text-white px-6 py-3 rounded-2xl text-sm font-medium transition-colors">
                 Send
               </button>
             </div>
 
             <div className="mt-8">
-              <h4 className="text-sm font-semibold mb-3">Follow Us</h4>
+              <h5 className="font-semibold text-[16px] mb-5 lg:mb-6">
+                Follow Us
+              </h5>
               <div className="flex gap-4">
                 <Link href="#" className="hover:text-white/80 transition">
                   <Facebook className="w-5 h-5" />
