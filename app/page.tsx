@@ -12,9 +12,14 @@ export default function Home() {
               Register
             </Button>
           </Link>
-          <Link href="/auth/login" className="">
+          <Link href="/auth/login" className="me-2">
             <Button variant="default" size="lg">
               Login
+            </Button>
+          </Link>
+          <Link href="/our-category/product-details" className="">
+            <Button variant="default" size="lg">
+              To Product Details
             </Button>
           </Link>
         </div>
