@@ -86,17 +86,19 @@ export default function Header() {
             </div>
 
             {/* Mobile Menu */}
-            <button
-              className="lg:hidden p-3 hover:bg-muted rounded-full"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-foreground" />
-              ) : (
-                <Menu className="w-6 h-6 text-foreground" />
-              )}
-            </button>
+            <div className="lg:hidden">
+              <button
+                className=" p-3 hover:bg-muted rounded-full"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-6 h-6 text-foreground" />
+                ) : (
+                  <Menu className="w-6 h-6 text-foreground" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu */}
