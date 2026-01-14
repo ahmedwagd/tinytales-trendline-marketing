@@ -17,3 +17,15 @@ export interface Response {
   data: User;
   message: string;
 }
+export type Product = {
+  id: number;
+  image: string;
+  category: string;
+  title: string;
+  price: number;
+  oldPrice: number | null;
+  discount: string | null;
+  rating: number;
+  reviews: number;
+  colors: string[];
+};

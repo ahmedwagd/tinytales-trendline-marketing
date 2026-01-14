@@ -3,9 +3,7 @@ import HeroBanner from "@/components/hero-banner";
 import ProductGallery from "@/components/product-details/product-gallery";
 import ProductInfo from "@/components/product-details/product-info";
 import ReviewsSection from "@/components/product-details/reviews-section";
-import SimilarItems, {
-  SimilarItemsT,
-} from "@/components/product-details/similar-items";
+import SimilarItems from "@/components/product-details/similar-items";
 
 export default function ProductDetailsPage() {
   return (
@@ -25,8 +23,7 @@ export default function ProductDetailsPage() {
         <ReviewsSection />
 
         {/* Similar Items */}
-        {/* <SimilarItems /> */}
-        {/* <SimilarItemsT /> */}
+        <SimilarItems />
       </div>
     </>
   );
